@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { useState} from 'react';
+import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 function CommentForm () {
@@ -15,7 +15,7 @@ function CommentForm () {
             payload: comments
         })
         setComment('');
-        history.push('/')
+        history.push('/review')
     }
 
     return (

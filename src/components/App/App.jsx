@@ -10,7 +10,7 @@ import FeelingForm from '../FeelingForm/FeelingForm.jsx'
 import UnderstandingForm from '../UnderstandingForm/UnderstandingForm.jsx'
 import SupportForm from '../SupportForm/SupportForm.jsx'
 import CommentForm from '../CommentForm/CommentForm.jsx'
-
+import ReviewForm from '../ReviewForm/ReviewForm.jsx'
 
 
 function App() {
@@ -39,6 +39,11 @@ function App() {
     <Route path='/comment' exact>
       <CommentForm />
     </Route>
+
+    <Route path='/review' exact>
+      <ReviewForm />
+    </Route>
+    
 
     </div>
 
