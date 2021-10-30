@@ -15,7 +15,7 @@ function SupportForm () {
             payload: support
         })
         setSupport('');
-        history.push('/comment')
+        history.push('/feedback/comment')
     }
 
     return (

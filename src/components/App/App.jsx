@@ -11,6 +11,7 @@ import UnderstandingForm from '../UnderstandingForm/UnderstandingForm.jsx'
 import SupportForm from '../SupportForm/SupportForm.jsx'
 import CommentForm from '../CommentForm/CommentForm.jsx'
 import ReviewForm from '../ReviewForm/ReviewForm.jsx'
+import SuccessPage from '../SuccessPage/SuccessPage.jsx'
 
 
 function App() {
@@ -20,28 +21,32 @@ function App() {
       
     <div className='App'>
 
-    <Route path='/' >
+    <Route path='/feedback'  >
       <Header />
     </Route>
 
-    <Route path='/' exact>
+    <Route path='/feedback' exact >
       <FeelingForm />
     </Route>
 
-    <Route path='/understanding' exact>
+    <Route path='/feedback/understanding' >
       <UnderstandingForm />
     </Route>
 
-    <Route path='/support' exact>
+    <Route path='/feedback/support' >
       <SupportForm />
     </Route>
 
-    <Route path='/comment' exact>
+    <Route path='/feedback/comment' >
       <CommentForm />
     </Route>
 
     <Route path='/review' exact>
       <ReviewForm />
+    </Route>
+
+    <Route path='/success' exact>
+      <SuccessPage />
     </Route>
     
 

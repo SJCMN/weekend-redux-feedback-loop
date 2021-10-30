@@ -17,7 +17,7 @@ function FeelingForm () {
             payload: feeling
         })
         setFeeling('');
-        history.push('/understanding')
+        history.push('/feedback/understanding')
 
     }
 

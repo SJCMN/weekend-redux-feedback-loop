@@ -15,7 +15,7 @@ function UnderstandingForm () {
             payload: understanding
         })
         setUnderstanding('');
-        history.push('/support')
+        history.push('/feedback/support')
     }
 
     return (

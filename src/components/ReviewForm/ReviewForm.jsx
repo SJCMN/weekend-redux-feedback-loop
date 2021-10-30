@@ -10,15 +10,16 @@ function ReviewForm () {
 
     const handleSubmit = () => {
         // e.preventDefault();
+        if (feelingData.comments != ''){
         axios.post('/feedback', feelingData)
         .then(response => {
-        history.push('/')
+        history.push('/success')
         })
         .catch(error => {
             console.log('Error in POST');
         })
-
-        
+    }
+        history.push('/feedback')
 
     }
 
