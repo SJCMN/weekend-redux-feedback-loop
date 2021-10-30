@@ -1,12 +1,16 @@
 import React from 'react';
-import axios from 'axios';
-import {HashRouter  as Router, Route} from 'react-router-dom';
+import {HashRouter as Router, Route} from 'react-router-dom';
 
 // CSS IMPORTS
 import './App.css';
 
 //COMPONENTS
+import Header from '../Header/Header.jsx'
 import FeelingForm from '../FeelingForm/FeelingForm.jsx'
+import UnderstandingForm from '../UnderstandingForm/UnderstandingForm.jsx'
+import SupportForm from '../SupportForm/SupportForm.jsx'
+import CommentForm from '../CommentForm/CommentForm.jsx'
+
 
 
 function App() {
@@ -17,14 +21,23 @@ function App() {
     <div className='App'>
 
     <Route path='/' >
-      <header className='App-header'>
-        <h1 className='App-title'>Feedback!</h1>
-        <h4>Don't forget it!</h4>
-      </header>
+      <Header />
     </Route>
 
-    <Route>
-      <FeelingForm path='/feeling'/>
+    <Route path='/' exact>
+      <FeelingForm />
+    </Route>
+
+    <Route path='/understanding' exact>
+      <UnderstandingForm />
+    </Route>
+
+    <Route path='/support' exact>
+      <SupportForm />
+    </Route>
+
+    <Route path='/comment' exact>
+      <CommentForm />
     </Route>
 
     </div>

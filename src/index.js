@@ -16,11 +16,13 @@ const feelingList = {
 
 const feelings = (state = feelingList, action ) => {
     if (action.type === 'ADD_FEELING'){
-        console.log('payload is:', {feeling:action.payload});
-        console.log('state is:',state);
-        
-        return {...state, feeling:action.payload};
-        
+        return {...state, feeling:action.payload}; 
+    } if (action.type === 'ADD_UNDERSTANDING'){
+        return {...state, understanding:action.payload}
+    } if (action.type === 'ADD_SUPPORT'){
+        return {...state, support:action.payload}
+    } if (action.type === 'ADD_COMMENT'){
+        return {...state, comments:action.payload}
     }
     return state;
 }

@@ -1,17 +1,14 @@
-import { useSelector, useDispatch } from 'react-redux'
-import { useHistory } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom'
+
 
 function FeelingForm () {
 
     const dispatch = useDispatch();
-    const history = useHistory();
     const [feeling, setFeeling] = useState('');
+    const history = useHistory();
 
-
-
-
-    
 
     const handleClick = (e) => {
        e.preventDefault();
@@ -20,28 +17,27 @@ function FeelingForm () {
             payload: feeling
         })
         setFeeling('');
-        // history.push('/')
+        history.push('/understanding')
 
     }
 
-    console.log(feeling);
 
     return (
         <div>
             <h2>
             How are you feeling today?
             </h2>
-            <label for="feeling">Feeling?</label>
+            <label htmlFor="feeling">Feeling?</label>
             <input 
+            min="0"
+            max="5"
             type="number" 
             name="feeling" 
             value={feeling}
             onChange={(event) => setFeeling(event.target.value)}
             />
             <div>
-                <button 
-                
-                onClick={(e) => handleClick(e)}>NEXT</button>
+                <button onClick={(e) => handleClick(e)}>NEXT</button>
             </div>
             
             </div>
