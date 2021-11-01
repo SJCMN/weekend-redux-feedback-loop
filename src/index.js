@@ -14,6 +14,15 @@ const feelingList = {
     comments: ''
 }
 
+const feelingTable = []
+
+const allFeelings = (state = feelingTable, action) => {
+    if (action.type === 'SET_FEELINGS'){
+        return [...state, action.payload]
+    }
+    return state;
+}
+
 const feelings = (state = feelingList, action ) => {
     if (action.type === 'ADD_FEELING'){
         return {...state, feeling:action.payload}; 
@@ -31,7 +40,8 @@ const feelings = (state = feelingList, action ) => {
 
 const feelingStore = createStore(
     combineReducers({
-        feelings
+        feelings,
+        allFeelings
     }), 
     applyMiddleware(logger)
 );

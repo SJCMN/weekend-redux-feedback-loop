@@ -12,6 +12,7 @@ import SupportForm from '../SupportForm/SupportForm.jsx'
 import CommentForm from '../CommentForm/CommentForm.jsx'
 import ReviewForm from '../ReviewForm/ReviewForm.jsx'
 import SuccessPage from '../SuccessPage/SuccessPage.jsx'
+import AdminList from '../AdminList/AdminList.jsx'
 
 
 function App() {
@@ -47,6 +48,10 @@ function App() {
 
     <Route path='/success' exact>
       <SuccessPage />
+    </Route>
+
+    <Route path='/admin' exact>
+      <AdminList />
     </Route>
     
 
