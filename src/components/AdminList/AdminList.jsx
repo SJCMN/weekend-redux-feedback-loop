@@ -1,39 +1,46 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { useHistory } from 'react-router-dom'
+import { useEffect, useState } from 'react';
+
 import axios from 'axios';
 
 function AdminList () {
 
-    const allFeelings = useSelector(store => store.allFeelings);
     const dispatch = useDispatch();
+    // const [support, setSupport] = useState('');
+    const allFeelings = useSelector(store => store.allFeelings);
+    const history = useHistory();
+    // let adminList = []
     
-    function getFeelings() {
+    
+    
+    const getFeelings = () => {
 
-        axios
-        .get('/feedback')
+        axios.get('/feedback')
         .then(response => {
             dispatch({
-                type: 'SET_ADMIN_LIST',
+                type: 'SET_FEELINGS',
                 payload: response.data
             })
-            console.log(response.data);
+            console.log('GET route says:', response.data);
+            // adminList = response.data
         })
         .catch(error => {
             console.log('error in get', error);
         })
     }
 
-    console.log('from Admin', allFeelings)
-    
-
+  
+   
     useEffect(() => {
         getFeelings();
       }, []);
 
+      console.log('from Admin', allFeelings)
 
     return (
         <div>
-            <h1> Admin List </h1>
+            <h1 onClick={() => (history.push('/feedback'))}> Admin List </h1>
             <table>
                 <thead>
                     <tr>
@@ -45,7 +52,8 @@ function AdminList () {
                     </tr>
                 </thead>
                 <tbody>
-                    {allFeelings.map((entry) => 
+                    
+                    {allFeelings.map(entry =>         
                           <tr key={entry.id}>
                           <td>{entry.feeling}</td>
                           <td>{entry.understanding}</td>
@@ -53,6 +61,7 @@ function AdminList () {
                           <td>{entry.comments}</td>
                       </tr>
                     )}
+
                 </tbody>
             </table>
         </div>
@@ -60,3 +69,4 @@ function AdminList () {
 };
 
 export default AdminList
+

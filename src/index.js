@@ -18,7 +18,7 @@ const feelingTable = []
 
 const allFeelings = (state = feelingTable, action) => {
     if (action.type === 'SET_FEELINGS'){
-        return [...state, action.payload]
+        return action.payload
     }
     return state;
 }
@@ -33,7 +33,7 @@ const feelings = (state = feelingList, action ) => {
     } if (action.type === 'ADD_COMMENT'){
         return {...state, comments:action.payload}
     } if (action.type === 'CLEAR_FEELINGS'){
-        return {...state, ...{feeling:0 , understanding:0 ,support:0, comments:''} }
+        return feelingList 
     }
     return state;
 }
@@ -47,7 +47,9 @@ const feelingStore = createStore(
 );
 
 
-console.log('This is STATE:', feelingList);
+// console.log('This is STATE:', feelingList);
+// console.log('Feelings Array GET route:', allFeelings);
+
 
 ReactDOM.render(
     <Provider store={feelingStore}>

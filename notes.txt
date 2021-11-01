@@ -1,0 +1,30 @@
+Code review
+()
+{}
+
+package data as an object
+useDispatch() is a hook
+const hook syntax
+
+function can only render
+hooks can be used for other functions, data
+
+
+const dispatch = dispatch();
+
+react syntax
+use verb to name dispatch type 'SET_FEELING'
+
+switch (action.type) {
+    case 'SET_FEELING':
+        return action.payload
+    default:
+        return state
+}
+
+package data together if the data needs to be combined as a object
+
+add conditional statement to server to validate data
+(if > 5 || < 0){
+    
+}

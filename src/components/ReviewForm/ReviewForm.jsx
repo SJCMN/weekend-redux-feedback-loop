@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 
-function ReviewForm () {
+function ReviewForm ({getFeelings}) {
 
     const feelingData = useSelector(store => store.feelings);
     const dispatch = useDispatch();
@@ -15,17 +15,18 @@ function ReviewForm () {
         axios.post('/feedback', feelingData)
         .then(response => {
         history.push('/success')
-        dispatch({type:'CLEAR_FEELINGS'})
+        dispatch({type:'CLEAR_FEELINGS'});
+        getFeelings();
         })
         .catch(error => {
-            console.log('Error in POST');
+            console.log('Error in POST', error);
         })
     }
         history.push('/feedback')
 
     }
 
-    console.log('This is the feelingData from store:', feelingData);
+    // console.log('This is the feelingData from store:', feelingData);
 
     return (
         <div>
