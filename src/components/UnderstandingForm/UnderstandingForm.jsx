@@ -1,20 +1,23 @@
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import FormNav from '../FormNav/FormNav.jsx'
 
 function UnderstandingForm () {
 
     const dispatch = useDispatch();
     const [understanding, setUnderstanding] = useState('');
     const history = useHistory();
+    const previousForm = ('/feedback')
 
-    const handleClick = (e) => {
-        e.preventDefault();
+
+    const handleClick = () => {
+        // e.preventDefault();
         dispatch({
             type: 'ADD_UNDERSTANDING',
             payload: understanding
         })
-        setUnderstanding('');
+        // setUnderstanding('');
         history.push('/feedback/support')
     }
 
@@ -33,7 +36,7 @@ function UnderstandingForm () {
             onChange={(event) => setUnderstanding(event.target.value)}
             />
             <div>
-                <button onClick={(e) => handleClick(e)}>NEXT</button>
+                <FormNav handleClick={handleClick} previousForm={previousForm}/>
             </div>
         </div>
 

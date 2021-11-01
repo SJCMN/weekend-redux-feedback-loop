@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux'
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom'
+import FormNav from '../FormNav/FormNav.jsx'
 
 
 function FeelingForm () {
@@ -10,13 +11,13 @@ function FeelingForm () {
     const history = useHistory();
 
 
-    const handleClick = (e) => {
-       e.preventDefault();
+    const handleClick = () => {
+    //    e.preventDefault();
         dispatch({
             type: 'ADD_FEELING',
             payload: feeling
         })
-        setFeeling('');
+        // setFeeling('');
         history.push('/feedback/understanding')
 
     }

@@ -1,20 +1,23 @@
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import FormNav from '../FormNav/FormNav.jsx'
 
 function SupportForm () {
 
     const dispatch = useDispatch();
     const [support, setSupport] = useState('');
     const history = useHistory();
+    const previousForm = ('/feedback/understanding')
 
-    const handleClick = (e) => {
-        e.preventDefault();
+
+    const handleClick = () => {
+        // e.preventDefault();
         dispatch({
             type: 'ADD_SUPPORT',
             payload: support
         })
-        setSupport('');
+        // setSupport('');
         history.push('/feedback/comment')
     }
 
@@ -32,7 +35,7 @@ function SupportForm () {
         onChange={(event) => setSupport(event.target.value)}
         />
         <div>
-            <button onClick={(e) => handleClick(e)}>NEXT</button>
+            <FormNav handleClick={handleClick} previousForm={previousForm}/>
         </div>
        
         </div>

@@ -1,20 +1,22 @@
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import FormNav from '../FormNav/FormNav.jsx'
 
 function CommentForm () {
 
     const dispatch = useDispatch();
     const [comments, setComment] = useState('');
     const history = useHistory();
+    const previousForm = ('/feedback/support')
 
-    const handleClick = (e) => {
-        e.preventDefault();
+    const handleClick = () => {
+        // e.preventDefault();
         dispatch({
             type: 'ADD_COMMENT',
             payload: comments
         })
-        setComment('');
+        // setComment('');
         history.push('/review')
     }
 
@@ -31,7 +33,7 @@ function CommentForm () {
             onChange={(event) => setComment(event.target.value)}
             />
             <div>
-                <button onClick={(e) => handleClick(e)}>NEXT</button>
+                <FormNav handleClick={handleClick} previousForm={previousForm}/>
             </div>
         </div>
 
