@@ -20,6 +20,8 @@ function CommentForm () {
         history.push('/review')
     }
 
+
+
     return (
 
         <div>

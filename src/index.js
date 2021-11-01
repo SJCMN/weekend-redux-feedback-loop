@@ -8,9 +8,9 @@ import { logger } from 'redux-logger';
 import { Provider } from 'react-redux';
 
 const feelingList = {
-    feeling: '',
-    understanding: '',
-    support: '',
+    feeling: 0,
+    understanding: 0,
+    support: 0,
     comments: ''
 }
 
@@ -23,6 +23,8 @@ const feelings = (state = feelingList, action ) => {
         return {...state, support:action.payload}
     } if (action.type === 'ADD_COMMENT'){
         return {...state, comments:action.payload}
+    } if (action.type === 'CLEAR_FEELINGS'){
+        return {...state, ...{feeling:0 , understanding:0 ,support:0, comments:''} }
     }
     return state;
 }

@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
@@ -6,6 +6,7 @@ import axios from 'axios';
 function ReviewForm () {
 
     const feelingData = useSelector(store => store.feelings);
+    const dispatch = useDispatch();
     const history = useHistory();
 
     const handleSubmit = () => {
@@ -14,6 +15,7 @@ function ReviewForm () {
         axios.post('/feedback', feelingData)
         .then(response => {
         history.push('/success')
+        dispatch({type:'CLEAR_FEELINGS'})
         })
         .catch(error => {
             console.log('Error in POST');

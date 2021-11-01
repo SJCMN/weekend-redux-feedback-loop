@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import FormNav from '../FormNav/FormNav.jsx'
@@ -7,6 +7,7 @@ function UnderstandingForm () {
 
     const dispatch = useDispatch();
     const [understanding, setUnderstanding] = useState('');
+    const feelingData = useSelector(store => store.feelings);
     const history = useHistory();
     const previousForm = ('/feedback')
 
@@ -15,11 +16,13 @@ function UnderstandingForm () {
         // e.preventDefault();
         dispatch({
             type: 'ADD_UNDERSTANDING',
-            payload: understanding
+            payload: Number(understanding)
         })
         // setUnderstanding('');
         history.push('/feedback/support')
     }
+
+    
 
     return (
         <div>
@@ -33,6 +36,7 @@ function UnderstandingForm () {
             type="number"
             name="understanding"
             value={understanding}
+            placeholder={feelingData.understanding}
             onChange={(event) => setUnderstanding(event.target.value)}
             />
             <div>

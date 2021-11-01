@@ -1,7 +1,7 @@
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom'
-import FormNav from '../FormNav/FormNav.jsx'
+
 
 
 function FeelingForm () {
@@ -9,15 +9,15 @@ function FeelingForm () {
     const dispatch = useDispatch();
     const [feeling, setFeeling] = useState('');
     const history = useHistory();
-
+    const feelingData = useSelector(store => store.feelings);
 
     const handleClick = () => {
     //    e.preventDefault();
         dispatch({
             type: 'ADD_FEELING',
-            payload: feeling
+            payload: Number(feeling)
         })
-        // setFeeling('');
+        // setFeeling(currentFeeling.feeling);
         history.push('/feedback/understanding')
 
     }
@@ -35,6 +35,7 @@ function FeelingForm () {
             type="number" 
             name="feeling" 
             value={feeling}
+            placeholder={feelingData.feeling}
             onChange={(event) => setFeeling(event.target.value)}
             />
             <div>

@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import FormNav from '../FormNav/FormNav.jsx'
@@ -8,6 +8,7 @@ function SupportForm () {
     const dispatch = useDispatch();
     const [support, setSupport] = useState('');
     const history = useHistory();
+    const feelingData = useSelector(store => store.feelings);
     const previousForm = ('/feedback/understanding')
 
 
@@ -15,11 +16,13 @@ function SupportForm () {
         // e.preventDefault();
         dispatch({
             type: 'ADD_SUPPORT',
-            payload: support
+            payload: Number(support)
         })
         // setSupport('');
         history.push('/feedback/comment')
     }
+
+    console.log('')
 
     return (
 
@@ -32,6 +35,7 @@ function SupportForm () {
         type="number"
         name="support"
         value={support}
+        placeholder={feelingData.support}
         onChange={(event) => setSupport(event.target.value)}
         />
         <div>
